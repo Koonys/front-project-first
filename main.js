@@ -99,7 +99,7 @@ function reset(){
     chance = 5;
     chanceArea.textContent=`남은기회 : ${chance}번`;
     history = [];
-    hintCount = 2;
+    hintCount = 3;
     hintMessage = ""
     userHistory.innerHTML="";
     correct=false;
@@ -142,15 +142,33 @@ function hint(e){
             hintCount--;
             randomRangeNum = randomRange();
         }
-        let minRange = Math.max(historyMin(), setNum - hintRange+randomRangeNum);
-        let maxRange = Math.min(historyMax(), setNum + hintRange-randomRangeNum);
+        let minRange = Math.max(0, setNum - hintRange+randomRangeNum);
+        let maxRange = Math.min(100, setNum + hintRange-randomRangeNum);
+        console.log("최초:"+minRange)
+        console.log("최초:"+maxRange)
+        minSet = historyMin();
+        maxSet = historyMax();
+        console.log("민셋"+minSet);
+        console.log("멕셋"+maxSet);
+        if(minSet>=minRange&&minSet<=setNum){
+            minRange = minSet;
+        }else if(maxSet>=minRange&&maxSet<=setNum){
+            minRange = maxSet
+        }else if(maxSet<=maxRange&&maxSet>=setNum){
+            maxRange = maxSet
+        }else if(minSet<=maxRange&&minSet>=setNum){
+            maxRange = minSet
+        }
+        console.log("최종"+minRange);
+        console.log("최종"+maxRange);
+        
         return `정답은 ${minRange}에서 ${maxRange}사이에 있습니다.`;
     }
     return "힌트가 필요 없을거 같은데요?";
 }
 
 function randomRange(){
-    return Math.floor(Math.random()*21)-10;
+    return Math.floor(Math.random()*15)-7;
 }
 
 randomNum();
