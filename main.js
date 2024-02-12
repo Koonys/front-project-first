@@ -21,7 +21,7 @@ hintBtn.addEventListener("mouseenter",function(e){
    hintMessage = hint(e);
    if(hintCount==0){
     hintSpan.innerText = hintMessage+"\n기회를 전부 소진 했어요";
-   }else if(hintCount==3){
+   }else if(hintCount==3&&chance==5){
     hintSpan.innerText = "게임을 시작해 주세요";
    }else{
     hintSpan.innerText = hintMessage;
