@@ -142,10 +142,8 @@ function hint(e){
             hintCount--;
             randomRangeNum = randomRange();
         }
-        let minArr = history;
-        let maxArr = history;
         let minRange = Math.max(0, setNum - hintRange+randomRangeNum);
-        let maxRange = Math.min(100, setNum + hintRange-randomRangeNum);
+        let maxRange = Math.min(100, setNum + hintRange+randomRangeNum);
         console.log("최초:"+minRange)
         console.log("최초:"+maxRange)
         minSet = historyMin(history);
