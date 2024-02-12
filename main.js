@@ -25,7 +25,7 @@ playBtn.addEventListener("click", play);
 resetBtn.addEventListener("click",reset);
 hintBtn.addEventListener("mouseenter",function(e){
    hintMessage = hint(e);
-   if(hintCount==0){
+   if(hintCount==0&&chance!=0){
     hintSpan.innerText = hintMessage+"\n기회를 전부 소진 했어요";
    }else if(hintCount==3&&chance==5){
     hintSpan.innerText = "게임을 시작해 주세요";
