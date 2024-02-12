@@ -79,6 +79,9 @@ function play(){
     }
     userHistory.innerHTML = historyResult;
     userInput.value="";
+    if(chance==0){
+        result.textContent = "GAME OVER"
+    }
 }
 
 function reset(){
