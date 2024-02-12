@@ -95,6 +95,7 @@ function reset(){
     history = [];
     hintCount = 2;
     hintMessage = "힌트가 필요 없어 보여요!"
+    userHistory.innerHTML="";
 }
 
 function hint(e){
