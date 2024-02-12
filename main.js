@@ -105,6 +105,26 @@ function reset(){
     correct=false;
 }
 
+function historyMin(){
+    let min = history[0];
+    for(let i=1;i<history.length;i++){
+        if(history[i]<min){
+            min = history[i]
+        }
+    }
+    return min;
+}
+
+function historyMax(){
+    let max = history[0];
+    for(let i=1;i<history.length;i++){
+        if(history[i]>max){
+            max = history[i]
+        }
+    }
+    return max;
+}
+
 function hint(e){
     if(hintCount==0&&chance!=0){
         e.preventDefault();
@@ -122,8 +142,8 @@ function hint(e){
             hintCount--;
             randomRangeNum = randomRange();
         }
-        let minRange = Math.max(0, setNum - hintRange+randomRangeNum);
-        let maxRange = Math.min(100, setNum + hintRange-randomRangeNum);
+        let minRange = Math.max(historyMin(), setNum - hintRange+randomRangeNum);
+        let maxRange = Math.min(historyMax(), setNum + hintRange-randomRangeNum);
         return `정답은 ${minRange}에서 ${maxRange}사이에 있습니다.`;
     }
     return "힌트가 필요 없을거 같은데요?";
