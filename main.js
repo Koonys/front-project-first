@@ -106,7 +106,7 @@ function reset(){
 }
 
 function hint(e){
-    if(hintCount==0){
+    if(hintCount==0&&chance!=0){
         e.preventDefault();
         return hintMessage;
     }
