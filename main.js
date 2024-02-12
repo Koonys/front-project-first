@@ -105,21 +105,21 @@ function reset(){
     correct=false;
 }
 
-function historyMin(){
-    let min = history[0];
-    for(let i=1;i<history.length;i++){
-        if(history[i]<min){
-            min = history[i]
+function historyMin(arr){
+    let min = arr[0];
+    for(let i=1;i<arr.length;i++){
+        if(arr[i]<min){
+            min = arr[i]
         }
     }
     return min;
 }
 
-function historyMax(){
-    let max = history[0];
-    for(let i=1;i<history.length;i++){
-        if(history[i]>max){
-            max = history[i]
+function historyMax(arr){
+    let max = arr[0];
+    for(let i=1;i<arr.length;i++){
+        if(arr[i]>max){
+            max = arr[i]
         }
     }
     return max;
@@ -142,12 +142,14 @@ function hint(e){
             hintCount--;
             randomRangeNum = randomRange();
         }
+        let minArr = history;
+        let maxArr = history;
         let minRange = Math.max(0, setNum - hintRange+randomRangeNum);
         let maxRange = Math.min(100, setNum + hintRange-randomRangeNum);
         console.log("최초:"+minRange)
         console.log("최초:"+maxRange)
-        minSet = historyMin();
-        maxSet = historyMax();
+        minSet = historyMin(history);
+        maxSet = historyMax(history);
         console.log("민셋"+minSet);
         console.log("멕셋"+maxSet);
         if(minSet>=minRange&&minSet<=setNum){
@@ -158,7 +160,7 @@ function hint(e){
             maxRange = maxSet
         }else if(minSet<=maxRange&&minSet>=setNum){
             maxRange = minSet
-        }
+        }        
         console.log("최종"+minRange);
         console.log("최종"+maxRange);
         
