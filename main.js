@@ -15,6 +15,11 @@ let difference2 = 0;
 let hintMessage="힌트가 필요 없어 보여요!";
 let randomRangeNum = randomRange();
 
+userInput.addEventListener("keyup",function(e){
+    if(e.key=="Enter"){
+        play();
+    }
+});
 playBtn.addEventListener("click", play);
 resetBtn.addEventListener("click",reset);
 hintBtn.addEventListener("mouseenter",function(e){
@@ -104,7 +109,7 @@ function hint(e){
         return hintMessage;
     }
     if(chance==0){
-        return setNum;
+        return `정답은 ${setNum} 였어요`;
     }
     let userAnswer = history[history.length - 1];
     let difference = Math.abs(setNum - userAnswer);
