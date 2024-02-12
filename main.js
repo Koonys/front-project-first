@@ -100,7 +100,7 @@ function reset(){
     chanceArea.textContent=`남은기회 : ${chance}번`;
     history = [];
     hintCount = 2;
-    hintMessage = "힌트가 필요 없어 보여요!"
+    hintMessage = ""
     userHistory.innerHTML="";
     correct=false;
 }
@@ -115,22 +115,22 @@ function hint(e){
     }
     let userAnswer = history[history.length - 1];
     let difference = Math.abs(setNum - userAnswer);
-    let hintRange = chance*10;
+    let hintRange = chance*8;
     if(difference >= hintRange){
         if(difference!==difference2){
             difference2=difference
             hintCount--;
             randomRangeNum = randomRange();
         }
-        let minRange = Math.max(0, setNum - hintRange-randomRangeNum);
-        let maxRange = Math.min(100, setNum + hintRange+randomRangeNum);
+        let minRange = Math.max(0, setNum - hintRange+randomRangeNum);
+        let maxRange = Math.min(100, setNum + hintRange-randomRangeNum);
         return `정답은 ${minRange}에서 ${maxRange}사이에 있습니다.`;
     }
-    return "정답에 거의 근접했어요";
+    return "힌트가 필요 없을거 같은데요?";
 }
 
 function randomRange(){
-    return Math.floor(Math.random()*10);
+    return Math.floor(Math.random()*21)-10;
 }
 
 randomNum();
