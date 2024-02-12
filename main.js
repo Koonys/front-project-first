@@ -103,6 +103,9 @@ function hint(e){
         e.preventDefault();
         return hintMessage;
     }
+    if(chance==0){
+        return setNum;
+    }
     let userAnswer = history[history.length - 1];
     let difference = Math.abs(setNum - userAnswer);
     let hintRange = chance*10;
