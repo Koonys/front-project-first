@@ -3,16 +3,39 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Game</title>
+    <link rel="icon" type="images/png" href="images/favicon.png">
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <h1>숫자 맞추기 게임</h1>
-    <div id="resultArea">결과 출력</div>
-    <div id="chanceArea">남은 기회 : 5번</div>
-    <input id="userInput" type="number"/>
-    <button id="playBtn">Go!</button>
-    <button id="resetBtn">Reset!</button>
+    <div class="container">
+      <h1>숫자 맞추기 게임</h1>
+      <div class="result">
+        <div class="img-container">
+          <img class="img" src="/images/result.png">
+          <span id="resultArea"></span>
+        </div>
+      </div>
+      <div id="chanceArea">남은 기회 : 5번</div>
+      <div class="userInput">
+        <input id="userInput" type="number"/>
+        <div class="buttonContainer">
+          <button id="playBtn">Go!</button>
+          <button id="resetBtn">Reset!</button>
+        </div>
+      </div>
+      <div class="userHistory">
+        <table class="table">
+          <tr id="userHistory">
+
+          </tr>
+        </table>
+      </div>
+      <div class="hint">
+          <button id="hintBtn">HINT</button>
+          <span id="hintMessage"></span>
+      </div>
+    </div>
     <script src="main.js"></script>
   </body>
 </html>
