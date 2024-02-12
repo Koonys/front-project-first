@@ -14,6 +14,7 @@ let hintCount = 3;
 let difference2 = 0;
 let hintMessage="힌트가 필요 없어 보여요!";
 let randomRangeNum = randomRange();
+let correct = false;
 
 userInput.addEventListener("keyup",function(e){
     if(e.key=="Enter"){
@@ -28,13 +29,13 @@ hintBtn.addEventListener("mouseenter",function(e){
     hintSpan.innerText = hintMessage+"\n기회를 전부 소진 했어요";
    }else if(hintCount==3&&chance==5){
     hintSpan.innerText = "게임을 시작해 주세요";
+   }else if(correct==true){
+    hintSpan.innerText = "정답을 맞추셨네요!";
    }else{
     hintSpan.innerText = hintMessage;
    }
 });
-hintBtn.addEventListener("mouseleave", function(){
-    hintBtn.innerText = "HINT";
-});
+
 userInput.addEventListener("focus", function(){
     userInput.value="";
 });
@@ -43,7 +44,6 @@ function randomNum(){
     setNum = Math.floor(Math.random()*100)+1;
     console.log(setNum);
 }
-
 
 function play(){
     let userVal = userInput.value;
@@ -68,15 +68,15 @@ function play(){
         result.textContent = "DOWN!!!"
     }else{
         result.textContent = "정답!!!"
-        gameOver = true;
+        correct = true;
     }
 
     history.push(userVal);
 
-    if(chance < 1){
+    if(chance < 1&&correct==false){
         gameOver = true;
     }
-    if(gameOver == true){
+    if(gameOver == true||correct==true){
         playBtn.disabled = true;
     }
     let historyResult = "";
@@ -85,7 +85,7 @@ function play(){
     }
     userHistory.innerHTML = historyResult;
     userInput.value="";
-    if(chance==0&&gameOver==true){
+    if(chance==0&&correct==false){
         result.textContent = "GAME OVER"
     }
 }
@@ -102,6 +102,7 @@ function reset(){
     hintCount = 2;
     hintMessage = "힌트가 필요 없어 보여요!"
     userHistory.innerHTML="";
+    correct=false;
 }
 
 function hint(e){
