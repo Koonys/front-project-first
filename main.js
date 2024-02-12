@@ -41,6 +41,7 @@ userInput.addEventListener("focus", function(){
 
 function randomNum(){
     setNum = Math.floor(Math.random()*100)+1;
+    console.log(setNum);
 }
 
 
@@ -84,7 +85,7 @@ function play(){
     }
     userHistory.innerHTML = historyResult;
     userInput.value="";
-    if(chance==0){
+    if(chance==0&&gameOver==true){
         result.textContent = "GAME OVER"
     }
 }
